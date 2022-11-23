@@ -11,6 +11,8 @@
 		0426E119292E35CF00675BEA /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0426E118292E35CF00675BEA /* ContentView.swift */; };
 		0426E11B292E35D200675BEA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0426E11A292E35D200675BEA /* Assets.xcassets */; };
 		0426E11E292E35D200675BEA /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0426E11D292E35D200675BEA /* Preview Assets.xcassets */; };
+		0426E128292E422A00675BEA /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0426E127292E422A00675BEA /* Extensions.swift */; };
+		0426E12E292E426600675BEA /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0426E12D292E426600675BEA /* HomeView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -19,6 +21,8 @@
 		0426E118292E35CF00675BEA /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		0426E11A292E35D200675BEA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0426E11D292E35D200675BEA /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		0426E127292E422A00675BEA /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		0426E12D292E426600675BEA /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -52,7 +56,9 @@
 			isa = PBXGroup;
 			children = (
 				0426E116292E35CF00675BEA /* WeatherPracticeApp.swift */,
-				0426E118292E35CF00675BEA /* ContentView.swift */,
+				0426E124292E41F800675BEA /* Views */,
+				0426E125292E420100675BEA /* Models */,
+				0426E126292E420D00675BEA /* Utils */,
 				0426E11A292E35D200675BEA /* Assets.xcassets */,
 				0426E11C292E35D200675BEA /* Preview Content */,
 			);
@@ -65,6 +71,62 @@
 				0426E11D292E35D200675BEA /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		0426E124292E41F800675BEA /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				0426E129292E423100675BEA /* Main */,
+				0426E12C292E424D00675BEA /* Navigation */,
+				0426E12B292E424400675BEA /* Detail */,
+				0426E12A292E423B00675BEA /* Components */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		0426E125292E420100675BEA /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		0426E126292E420D00675BEA /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				0426E127292E422A00675BEA /* Extensions.swift */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		0426E129292E423100675BEA /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				0426E118292E35CF00675BEA /* ContentView.swift */,
+				0426E12D292E426600675BEA /* HomeView.swift */,
+			);
+			path = Main;
+			sourceTree = "<group>";
+		};
+		0426E12A292E423B00675BEA /* Components */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
+		0426E12B292E424400675BEA /* Detail */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Detail;
+			sourceTree = "<group>";
+		};
+		0426E12C292E424D00675BEA /* Navigation */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Navigation;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -138,6 +200,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				0426E119292E35CF00675BEA /* ContentView.swift in Sources */,
+				0426E12E292E426600675BEA /* HomeView.swift in Sources */,
+				0426E128292E422A00675BEA /* Extensions.swift in Sources */,
 				0426E117292E35CF00675BEA /* WeatherPracticeApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
