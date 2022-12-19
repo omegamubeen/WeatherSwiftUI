@@ -6,28 +6,65 @@
 //
 
 import SwiftUI
+import BottomSheet
+
+enum BottomSheetPosition: CGFloat, CaseIterable {
+    case top = 0.83 //702/844
+    case middle = 0.385 //325/844
+}
 
 struct HomeView: View {
+    @State var bottomSheetPosition: BottomSheetPosition = .middle
+    @State var bottomSheetTranslation: CGFloat = BottomSheetPosition.middle.rawValue
+    
+    
+    var bottomSheetTranslationPorated: CGFloat {
+        (bottomSheetTranslation - BottomSheetPosition.middle.rawValue) /
+        (BottomSheetPosition.top.rawValue - BottomSheetPosition.middle.rawValue)
+    }
+    
     var body: some View {
-        ZStack {
-            Color.background
-                .ignoresSafeArea()
+        
+        NavigationView {
             
-            Image("Background").resizable().ignoresSafeArea()
-            
-            Image("House").frame(maxHeight: .infinity, alignment: .top)
-                .padding(.top, 257)
-            
-            VStack {
-                Text("Montreal").font(.largeTitle)
+            GeometryReader { geometry in
                 
-                VStack {
-                    Text(attributedString)
-                    Text("H:20°    L:18°").font(.title3.weight(.semibold))
+                let screenHeight = geometry.size.height + geometry.safeAreaInsets.top + geometry.safeAreaInsets.bottom
+                let imageOffset = screenHeight + 36
+                
+                ZStack {
+                    Color.background
+                        .ignoresSafeArea()
+                    
+                    Image("Background").resizable().ignoresSafeArea().offset(y: -bottomSheetTranslationPorated * imageOffset)
+                    
+                    Image("House").frame(maxHeight: .infinity, alignment: .top)
+                        .padding(.top, 280).offset(y: -bottomSheetTranslationPorated * imageOffset)
+                    
+                    VStack {
+                        Text("Montreal").font(.largeTitle)
+                        
+                        VStack {
+                            Text(attributedString)
+                            Text("H:20°    L:18°").font(.title3.weight(.semibold))
+                        }
+                        Spacer()
+                    }
+                    .padding(.top, 51).offset(y: -bottomSheetTranslationPorated * imageOffset)
+                    
+                    BottomSheetView(position: $bottomSheetPosition) {
+                        Text(bottomSheetTranslationPorated.formatted())
+                    } content: {
+                        ForcastView()
+                    }.onBottomSheetDrag { position in
+                        bottomSheetTranslation = position / screenHeight
+                    }
+                    
+                    
+                    TabBar(action: {bottomSheetPosition = .top})
                 }
-                Spacer()
             }
-        }
+        }.navigationBarHidden(true)
     }
     
     private var attributedString: AttributedString {
@@ -44,7 +81,7 @@ struct HomeView: View {
         if let weather = string.range(of: "Mostly Clear") {
             string[weather].font = .title3.weight(.semibold)
             string[weather].foregroundColor = .secondary
-        }
+        } 
 
         
         return string
