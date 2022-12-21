@@ -14,6 +14,7 @@ enum BottomSheetPosition: CGFloat, CaseIterable {
 }
 
 struct HomeView: View {
+    @State var hasDragged: Bool = false
     @State var bottomSheetPosition: BottomSheetPosition = .middle
     @State var bottomSheetTranslation: CGFloat = BottomSheetPosition.middle.rawValue
     
@@ -36,47 +37,62 @@ struct HomeView: View {
                     Color.background
                         .ignoresSafeArea()
                     
-                    Image("Background").resizable().ignoresSafeArea().offset(y: -bottomSheetTranslationPorated * imageOffset)
+                    Image("Background").resizable()
+                        .ignoresSafeArea()
+                        .offset(y: -bottomSheetTranslationPorated * imageOffset)
                     
                     Image("House").frame(maxHeight: .infinity, alignment: .top)
-                        .padding(.top, 280).offset(y: -bottomSheetTranslationPorated * imageOffset)
+                        .padding(.top, 280)
+                        .offset(y: -bottomSheetTranslationPorated * imageOffset)
                     
-                    VStack {
-                        Text("Montreal").font(.largeTitle)
+                    VStack(spacing: -5 * (1  - bottomSheetTranslationPorated)) {
+                        Text("Montreal")
+                            .font(.largeTitle)
                         
                         VStack {
                             Text(attributedString)
-                            Text("H:20°    L:18°").font(.title3.weight(.semibold))
+                            Text("H:20°    L:18°")
+                                .font(.title3.weight(.semibold))
+                                .opacity(1 - bottomSheetTranslationPorated)
                         }
                         Spacer()
                     }
-                    .padding(.top, 51).offset(y: -bottomSheetTranslationPorated * imageOffset)
+                    .padding(.top, 51)
+                    .offset(y: -bottomSheetTranslationPorated * 46)
                     
+                    //MARK: BottomSheet
                     BottomSheetView(position: $bottomSheetPosition) {
-                        Text(bottomSheetTranslationPorated.formatted())
+//                        Text(bottomSheetTranslationPorated.formatted())
                     } content: {
-                        ForcastView()
+                        ForcastView(bottomSheetTranslationProrated: bottomSheetTranslationPorated)
                     }.onBottomSheetDrag { position in
                         bottomSheetTranslation = position / screenHeight
+                        
+                        withAnimation(.easeInOut) {
+                            if bottomSheetPosition == BottomSheetPosition.top {
+                                hasDragged = true
+                            } else {hasDragged = false}
+                        }
                     }
                     
-                    
+                    //MARK: TabBar
                     TabBar(action: {bottomSheetPosition = .top})
+                        .offset(y: bottomSheetTranslationPorated * 115)
                 }
             }
         }.navigationBarHidden(true)
     }
     
     private var attributedString: AttributedString {
-        var string = AttributedString("19°" + "\n " + "Mostly Clear")
+        var string = AttributedString("19°" + (hasDragged ? " | " : "\n ") + "Mostly Clear")
         
         if let temp = string.range(of: "19°") {
-            string[temp].font = .system(size: 96, weight: .thin)
-            string[temp].foregroundColor = .primary
+            string[temp].font = .system(size: (hasDragged ? 20 : 96), weight: hasDragged ? .semibold : .thin)
+            string[temp].foregroundColor = hasDragged ? .secondary : .primary
         }
         if let pipe = string.range(of: " | ") {
             string[pipe].font = .title3.weight(.semibold)
-            string[pipe].foregroundColor = .secondary
+            string[pipe].foregroundColor = .secondary.opacity(bottomSheetTranslationPorated)
         }
         if let weather = string.range(of: "Mostly Clear") {
             string[weather].font = .title3.weight(.semibold)

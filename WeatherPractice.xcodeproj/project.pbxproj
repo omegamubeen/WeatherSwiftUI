@@ -13,6 +13,7 @@
 		0426E11E292E35D200675BEA /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0426E11D292E35D200675BEA /* Preview Assets.xcassets */; };
 		0426E128292E422A00675BEA /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0426E127292E422A00675BEA /* Extensions.swift */; };
 		0426E12E292E426600675BEA /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0426E12D292E426600675BEA /* HomeView.swift */; };
+		04600EE029532D960090116D /* SegmentController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04600EDF29532D960090116D /* SegmentController.swift */; };
 		047870AB295077B800797854 /* Shapes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047870AA295077B800797854 /* Shapes.swift */; };
 		047870AD29507F9100797854 /* ForcastView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047870AC29507F9100797854 /* ForcastView.swift */; };
 		047870AF295087A600797854 /* UIBackdropView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047870AE295087A600797854 /* UIBackdropView.swift */; };
@@ -28,6 +29,7 @@
 		0426E11D292E35D200675BEA /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		0426E127292E422A00675BEA /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		0426E12D292E426600675BEA /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		04600EDF29532D960090116D /* SegmentController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SegmentController.swift; sourceTree = "<group>"; };
 		047870AA295077B800797854 /* Shapes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Shapes.swift; sourceTree = "<group>"; };
 		047870AC29507F9100797854 /* ForcastView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForcastView.swift; sourceTree = "<group>"; };
 		047870AE295087A600797854 /* UIBackdropView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIBackdropView.swift; sourceTree = "<group>"; };
@@ -123,6 +125,7 @@
 			isa = PBXGroup;
 			children = (
 				047870AE295087A600797854 /* UIBackdropView.swift */,
+				04600EDF29532D960090116D /* SegmentController.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -221,6 +224,7 @@
 			files = (
 				0426E119292E35CF00675BEA /* ContentView.swift in Sources */,
 				0426E12E292E426600675BEA /* HomeView.swift in Sources */,
+				04600EE029532D960090116D /* SegmentController.swift in Sources */,
 				0426E128292E422A00675BEA /* Extensions.swift in Sources */,
 				0426E117292E35CF00675BEA /* WeatherPracticeApp.swift in Sources */,
 				048B0ACC295073C400F8133F /* TabBar.swift in Sources */,
